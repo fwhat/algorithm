@@ -1,4 +1,4 @@
-package _445
+package golang
 
 import "testing"
 
@@ -24,7 +24,6 @@ func TestAddTwoNumbers(t *testing.T) {
 			},
 		},
 	)
-	println(numbers)
 
 	res := []int{8, 0, 7}
 

@@ -1,3 +1,3 @@
 module leet-code
 
-go 1.14
+go 1.13
