@@ -1,2 +1,1 @@
-# leet-code
-leet-code submit
+# algorithm
