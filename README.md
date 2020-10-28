@@ -1,1 +1,16 @@
 # algorithm
+
++ [两数相加 II](add_two_numbers)
++ [冒泡排序](bubble_sort)
++ [插入排序](insert_sort)
++ [选择排序](select_sort)
++ [有序数组二分查找](binary_search)
++ [数组中找到奇数次的数(只有一种数出现奇数)](find_odd_times_numbers)
++ [数组中找到奇数次的数(只有两种数出现奇数)](find_odd_times_numbers_has_two_number)
++ [局部最小值](local_minimum)
++ [不越界实现两数相加再除二](safe_add_and_median)
++ [不用算术运算实现一个数的实现2N+1](double_and_plus_1)
++ [搜索最左侧大于某个数的位置](search_leftmost_greater_than)
++ [不使用临时变量交换两个数](swap_without_temp)
++ [找到一个数中的最右侧的1(二进制中的1)](find_the_rightmost_1_in_a_number)
++ [求一个数中二进制1的个数](count_the_1_in_a_number)
