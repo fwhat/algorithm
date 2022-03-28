@@ -164,6 +164,7 @@ public class Random {
     }
 
     /**
+     * 由 [a, b] 等概率转换为 [A, B] 等概率
      * 1. 将 random [a, b] 转化为 0, 1 随机函数 f01
      * 2. 将 [toA, toB] 转化为 [0 , toB-toA] + toA
      * 3. 计算 [0, toB-toA] 至少需要多少位bit 存储 n

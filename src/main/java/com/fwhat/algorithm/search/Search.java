@@ -3,6 +3,8 @@ package com.fwhat.algorithm.search;
 import com.fwhat.algorithm.Assert;
 import com.fwhat.algorithm.Mid;
 
+import java.util.HashMap;
+
 public class Search {
 
     public static void main(String[] args) {
@@ -134,4 +136,26 @@ public class Search {
             mid = Mid.mid(left, right);
         }
     }
+
+    /**
+     * https://leetcode-cn.com/problems/two-sum/submissions/
+     * 1. 利用map构建O(1)级别寻址
+     * 2. 循环数组在map中找到 target - nums[i] 的值
+     *
+     * 注意不能使用同一索引
+     * 这里可以不用先循环一次初始化map;
+     */
+    public static int[] search(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(var i = 0; i < nums.length; i ++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{i, (int) map.get(target - nums[i])};
+            }
+            map.put(nums[i], i);
+        }
+
+        return new int[]{};
+    }
+
 }
