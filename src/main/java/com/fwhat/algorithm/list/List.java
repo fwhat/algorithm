@@ -212,6 +212,17 @@ public class List {
 
         ListNode newHead6 = mergeTwoLists(list6.getHead(), list7.getHead());
         print(newHead6);
+
+        SingleList list8 = new SingleList();
+
+        list8.add(9);
+        list8.add(9);
+
+        SingleList list9 = new SingleList();
+        list9.add(1);
+
+        ListNode newHead7 = addTwoNumbers(list8.getHead(), list9.getHead());
+        print(newHead7);
     }
 
     public static void printReserve(DoubleNode tail) {
@@ -346,6 +357,17 @@ public class List {
         return start;
     }
 
+
+    public static int size(ListNode start) {
+        var size = 0;
+        while (start != null) {
+            start = start.next;
+            size++;
+        }
+
+        return size;
+    }
+
     /**
      * https://leetcode-cn.com/problems/merge-two-sorted-lists/submissions/
      * 合并两个有序链表
@@ -394,4 +416,51 @@ public class List {
 
         return minHead;
     }
+
+    /**
+     * https://leetcode-cn.com/problems/add-two-numbers-ii/submissions/
+     * 两个链表相加 1-2-3 5-6-7-8
+     * 1. 加法由最后开始加，然后逐步进1;
+     * 2. 所以先翻转两个链表, 保证从个位数开始
+     * 3. 选择一个较长的链表作为主链记录新值, 记录每一步的进位
+     * 4. 要记录上一个的值，用于处理最后一个进位
+     */
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode reserve1 = reserve(l1);
+        ListNode reserve2 = reserve(l2);
+        int size1 = size(reserve1);
+        int size2 = size(reserve2);
+
+        var longL = size1 > size2 ? reserve1 : reserve2;
+        var shortL = size1 > size2 ? reserve2 : reserve1;
+
+        var head = longL;
+
+        var add = 0;
+        ListNode last = null;
+        while (shortL != null) {
+            int sum = longL.val + shortL.val + add;
+            longL.val = sum % 10;
+            add = sum / 10;
+            shortL = shortL.next;
+            last = longL;
+            longL = longL.next;
+        }
+
+        while (longL != null) {
+            int sum = longL.val + add;
+            longL.val = sum % 10;
+            add = sum / 10;
+            last = longL;
+            longL = longL.next;
+        }
+
+        if (add > 0) {
+            last.next = new ListNode(1);
+        }
+
+        return reserve(head);
+    }
+
+
 }
