@@ -19,3 +19,5 @@
 + [单链表按k个为一组逆序](src/main/java/com/fwhat/algorithm/list/List.java#reserveGroupByK)
 + [code21](https://leetcode-cn.com/problems/merge-two-sorted-lists/submissions/) [合并两个增序链表](src/main/java/com/fwhat/algorithm/list/List.java#mergeTwoLists)
 + [code445](https://leetcode-cn.com/problems/merge-two-sorted-lists/submissions/) [两个链表相加](src/main/java/com/fwhat/algorithm/list/List.java#addTwoNumbers)
++ [内存资源分配](src/main/java/com/fwhat/algorithm/memory/MemoryPool.java#allocate)
++ [最长的顺子](src/main/java/com/fwhat/algorithm/card/Card.java#longChain)
