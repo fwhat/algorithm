@@ -26,4 +26,4 @@
 + [字符串加密](src/main/java/com/fwhat/algorithm/string/Strings.java#encrypt)
 + [找终点](src/main/java/com/fwhat/algorithm/step/Step.java#minStep)
 + [TLV解码](src/main/java/com/fwhat/algorithm/binary/TLV.java#findTVL)
-+ [最小和](src/main/java/com/fwhat/algorithm/number/Number.java#minSum)
++ [求字符串中所有整数的最小和](src/main/java/com/fwhat/algorithm/number/Number.java#minSum)
