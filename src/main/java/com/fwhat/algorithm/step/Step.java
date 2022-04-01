@@ -8,7 +8,8 @@ public class Step {
     public static void main(String[] args) {
         System.out.println(minStep("7 5 8 4 7 3 5 3 4 4 1 1 9"));
 
-        minD();
+//        minD();
+        maxD();
     }
 
     /**
@@ -90,5 +91,50 @@ public class Step {
         }
 
         System.out.println(maxD / 2.00);
+    }
+
+    /**
+     * 【找车位】停车场有一横排车位，0代表没有停车，1代表有车。至少停了一辆车在车位上，也至少有一个空位没有停车。为了防刮蹭，需为停车人找到一个车位，使得距
+     * 停车人的车最近的车辆的距离是最大的，返回此次的最大距离。
+     * 输入描述:
+     * 1、一个用半角逗号分割的停车标识字符串，停车标识为0或1，0为空位，1为已停车。
+     * 2、停车位最多100个。输出描述:
+     * 输出一个整数记录最大距离。
+     * 示例1:
+     * 输入
+     * 1,0,0,0,0,1,0,0,1,0,1
+     * 输出
+     * 2
+     */
+    public static void maxD() {
+        Scanner scanner = new Scanner(System.in);
+        String[] cars = scanner.nextLine().split(",");
+
+        int tempD = 0;
+        int maxD = 0;
+        boolean start = true;
+
+        for (int i = 0; i < cars.length; i++) {
+
+            if (cars[i].equals("0")) {
+                tempD++;
+                if (i == cars.length - 1) {
+                    tempD = tempD * 2;
+                }
+
+                if (start) {
+                    tempD++;
+                }
+            } else {
+                if (start) {
+                    start = false;
+                }
+                maxD = Math.max(maxD, tempD);
+                tempD = 0;
+            }
+        }
+        maxD = Math.max(maxD, tempD);
+
+        System.out.println(maxD / 2);
     }
 }
