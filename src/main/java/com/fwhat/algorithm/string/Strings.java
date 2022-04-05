@@ -1,5 +1,6 @@
 package com.fwhat.algorithm.string;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Scanner;
@@ -12,6 +13,16 @@ public class Strings {
 
 //        subString8();
         System.out.println(encrypt("TRAILBLAZERS", "Attack AT DAWN"));
+        System.out.println(maskString(3, "password_a12345678_timeout_100"));
+
+        System.out.println(maxSubString("abcabcbb"));
+        System.out.println(maxSubString2("AAAAHHHBBCDHHHH", 3));
+        System.out.println(maxSubString2("AABAAA", 2));
+        System.out.println(urlJoin("/acm,/bb"));
+        System.out.println(urlJoin("/abc/,/bcd"));
+        System.out.println(urlJoin(","));
+        minString("abcdef");
+        minString("bcdefa");
     }
 
     /**
@@ -139,5 +150,255 @@ public class Strings {
         }
 
         return new String(dataChars);
+    }
+
+    /**
+     * 12、标题:敏感字段加密
+     * 【敏感字段加密敏】给定一个由多个命令字组成的命令字符串:
+     * 1、字符串长度小于等于127字节，只包含大小写字母、数字、下划线和偶数个双引号;
+     * 2、命令字之间以一个或多个下划线_进行分割;
+     * 3、可以通过两个双引号来"标识包含下划线_的命令字或空命令字(仅包含两个引双引号的命令字)双引号不会在命令字内部出现;
+     * 仅对指定索引的敏感字段进行加密，替换为*(6个*)，并删除命令字前后多余的下划线_。如果无法找到指定索引的命令字，输出字符串ERROR。
+     * 输入描述:
+     * 输入为两行，第一行为命令字索引K(从0开始)，第二行为命令字符串S。
+     * 输出描述:
+     * 输出处理后的命令字符串，如果无法找到指定索引的命令字，输出字符串ERROR
+     * 示例:
+     * 输入
+     * 1
+     * password_a12345678_timeout_100
+     * 输出
+     * password_******_timeout_100
+     */
+    public static void maskString() {
+        Scanner scanner = new Scanner(System.in);
+        int k = Integer.parseInt(scanner.nextLine());
+        String str = scanner.nextLine();
+
+        System.out.println(maskString(k, str));
+    }
+
+    public static String maskString(int k ,String str) {
+        StringBuilder masked = new StringBuilder();
+
+        int len = str.length();
+        int underline = 0;
+        boolean maskMode = (k == underline);
+        if (maskMode) {
+            masked.append("******");
+        }
+        for (int i = 0; i < len; i++) {
+            if (maskMode) {
+                if (str.charAt(i) == '_') {
+                    masked.append(str.substring(i));
+                    break;
+                }
+            } else {
+                if (str.charAt(i) == '_') {
+                    underline++;
+                    if (k == underline) {
+                        maskMode = true;
+                        masked.append('_').append("******");
+                        continue;
+                    }
+                }
+                masked.append(str.charAt(i));
+            }
+        }
+
+        return masked.toString();
+    }
+
+    /**
+     * 题目描述：
+     * 给定一个字符串String，求取该字符串满足条件的最长子串的长度。
+     * 条件：该子串中各字符最多出现两次。
+     *
+     * 测试用例：
+     * 输入：abcabcbb
+     * 输出：6
+     *
+     * 说明：子串abcabc每个字符出现的次数都小于等于2，满足条件且为最长，输出长度6。
+     */
+    public static int maxSubString(String str) {
+        int maxSub = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            HashMap<Character, Integer> map = new HashMap<>();
+            for (int j = i; j < str.length(); j++) {
+                char ch = str.charAt(j);
+                if (map.containsKey(ch)) {
+                    if (map.get(ch) > 2) {
+                        if (j - i - 1 > maxSub) {
+                            maxSub = j - i - 1;
+                        }
+                        break;
+                    } else {
+                        map.put(ch, map.get(ch) + 1);
+                    }
+                } else {
+                    map.put(ch, 1);
+                }
+            }
+        }
+
+        return maxSub;
+    }
+
+    /**
+     * 连续字母长度
+     * 给定一个字符串，只包含大写字母，求在包含同一字母的子串中，长度第 k 长的子串的长度，相同字母只取最长的那个子串。
+     * 输入描述:
+     *
+     * 第一行有一个子串(1<长度<=100)，只包含大写字母。
+     * 第二行为 k的值
+     * 输出描述:
+     *
+     * 输出连续出现次数第k多的字母的次数。
+     * 示例
+     *
+     * 输入：
+     * AABAAA
+     * 2
+     * 输出：
+     * 1
+     * 说明：
+     *
+     * 同一字母连续出现最多的A 3次
+     * 第二多2次 但A出现连续3次
+     *
+     * 输入：
+     * AAAAHHHBBCDHHHH
+     * 3
+     * 输出：
+     * 2
+     * 说明：
+     *
+     * 同一字母连续出现的最多的是A和H，四次
+     * 第二多的是B，2次
+     */
+    public static int maxSubString2(String str, int k) {
+        int len = str.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        char subChar = str.charAt(0);
+        int charLen = 1;
+
+        for (int i = 1; i < len; i++) {
+            if (str.charAt(i) == subChar) {
+                charLen++;
+            } else {
+                if (map.containsKey(subChar)) {
+                    map.put(subChar, Math.max(map.get(subChar), charLen));
+                } else {
+                    map.put(subChar, charLen);
+                }
+                subChar = str.charAt(i);
+                charLen = 1;
+            }
+        }
+
+        Integer[] integers = map.values().toArray(new Integer[]{});
+        if (k > integers.length) {
+            return -1;
+        }
+        Arrays.sort(integers);
+        return integers[integers.length - k];
+    }
+
+    /**
+     * 题目描述
+     *
+     * 给定一个url前缀和url后缀,通过,分割 需要将其连接为一个完整的url
+     * 如果前缀结尾和后缀开头都没有/，需要自动补上/连接符
+     * 如果前缀结尾和后缀开头都为/，需要自动去重
+     * 约束：不用考虑前后缀URL不合法情况
+     * 输入描述
+     *
+     * url前缀(一个长度小于100的字符串) url后缀(一个长度小于100的字符串)
+     *
+     * 输出描述
+     *
+     * 拼接后的url
+     *
+     * 一、 输入
+     * /acm,/bb
+     * 输出
+     *
+     * /acm/bb
+     * 二、输入
+     *
+     * /abc/,/bcd
+     * 输出
+     *
+     * /abc/bcd
+     * 拼接 URL
+     */
+    public static String urlJoin(String urlStr) {
+        StringBuilder url = new StringBuilder();
+        url.append('/');
+        String[] urls = urlStr.split(",");
+        for (String s : urls) {
+            int begin = 0;
+            int end = s.length();
+            if (s.startsWith("/")) {
+                begin = 1;
+            }
+            if (s.endsWith("/")) {
+                end = s.length() - 1;
+            }
+            url.append(s, begin, end).append('/');
+        }
+        if (url.length() > 1) {
+            return url.substring(0, url.length() - 1);
+        }
+
+        return url.toString();
+    }
+
+    /**
+     * 题目描述：
+     * 给定一个字符串s，最多只能进行一次变换，返回变换后能得到的最小字符串（按照字典序进行比较）。
+     * 变换规则：交换字符串中任意两个不同位置的字符。
+     * 输入描述：
+     * 一串小写字母组成的字符串s。
+     * 输出描述：
+     * 按照要求进行变换得到的最小字符串。
+     * 备注：
+     * s是都是小写字符组成
+     * 1<=s.length<=1000
+     * 示例
+     * 输入：abcdef
+     *
+     * 输出：abcdef
+     *
+     * 说明：abcdef已经是最小字符串，不需要交换
+     *
+     *
+     * 输入：bcdefa
+     *
+     * 输出：acdefb
+     *
+     * 说明：a和b进行位置交换，可以得到最小字符串
+     */
+    public static void minString(String str) {
+        int len = str.length();
+        char[] chars = str.toCharArray();
+        for (int i = 0; i < len; i++) {
+            int minCharIndex = i;
+            for (int j = i + 1; j < len; j++) {
+                if (str.charAt(j) < str.charAt(minCharIndex)) {
+                    minCharIndex = j;
+                }
+            }
+            if (minCharIndex != i) {
+                char temp = chars[i];
+                chars[i] = chars[minCharIndex];
+                chars[minCharIndex] = temp;
+                break;
+            }
+        }
+
+        System.out.println(String.valueOf(chars));;
     }
 }
