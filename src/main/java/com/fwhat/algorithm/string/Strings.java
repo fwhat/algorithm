@@ -23,6 +23,9 @@ public class Strings {
         System.out.println(urlJoin(","));
         minString("abcdef");
         minString("bcdefa");
+        sameSubString("12312");
+        sameSubString("12314");
+        sameSubString("123123");
     }
 
     /**
@@ -400,5 +403,32 @@ public class Strings {
         }
 
         System.out.println(String.valueOf(chars));;
+    }
+
+    /**
+     * 输入一个字符串，判断是否含有相同的子串（字串长度大于1），是输出1，否，输出0。
+     * 例如12312含有两个12,所以输出1；23456则没有相同子序列，输出0.
+     *
+     * 输入：12312
+     * 输出：1
+     */
+    public static void sameSubString(String str) {
+        int len = str.length();
+        boolean continueMode = true;
+
+        for (int i = 0; i < len-1 && continueMode; i ++) {
+            String sub = String.valueOf(new char[]{str.charAt(i), str.charAt(i+1)});
+            for (int j = i + 2; j < len - 1; j++) {
+                if (sub.equals(String.valueOf(new char[]{str.charAt(j), str.charAt(j+1)}))) {
+                    continueMode = false;
+                    break;
+                }
+            }
+        }
+        if (continueMode) {
+            System.out.println("0");
+        } else {
+            System.out.println("1");
+        }
     }
 }

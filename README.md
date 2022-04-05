@@ -58,3 +58,7 @@
 + [拼接URL](src/main/java/com/fwhat/algorithm/other/UserTask.java#userTask)
 + [喊7的次数重排](src/main/java/com/fwhat/algorithm/other/Resort.java#resort)
 + [字符串变换最小字符串](src/main/java/com/fwhat/algorithm/string/Strings.java#minString)
++ [数组去重和排序](src/main/java/com/fwhat/algorithm/sort/OtherSort.java#arrayCountSort)
++ [勾股数元组](src/main/java/com/fwhat/algorithm/other/SomeCode.java#code1)
++ [报数游戏](src/main/java/com/fwhat/algorithm/other/SomeCode.java#code2)
++ [分糖果](src/main/java/com/fwhat/algorithm/other/SomeCode.java#code3)
