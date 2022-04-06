@@ -62,3 +62,6 @@
 + [勾股数元组](src/main/java/com/fwhat/algorithm/other/SomeCode.java#code1)
 + [报数游戏](src/main/java/com/fwhat/algorithm/other/SomeCode.java#code2)
 + [分糖果](src/main/java/com/fwhat/algorithm/other/SomeCode.java#code3)
++ [数组二叉树](src/main/java/com/fwhat/algorithm/tree/Tree.java#minNodePath)
++ [高效的任务规划](src/main/java/com/fwhat/algorithm/other/FastTask.java#fastTask)
++ [字符匹配](src/main/java/com/fwhat/algorithm/string/Strings.java#allCharExists)
