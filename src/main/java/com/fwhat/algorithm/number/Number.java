@@ -25,6 +25,8 @@ public class Number {
 //        mergeArray(new int[]{1, 2, 5}, new int[]{-1, 0, 3, 2});
 
         System.out.println(maxMinN(new int[]{3, 3, 2, 4, 2}, 2));
+        System.out.println(isPalindrome(121));
+        System.out.println(isPalindrome(123));
     }
 
     /**
@@ -721,5 +723,81 @@ public class Number {
         }
 
         return sum;
+    }
+
+    /**
+     * 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+     *
+     * 回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+     *
+     * 例如，121 是回文，而 123 不是。
+     * 
+     *
+     * 示例 1：
+     *
+     * 输入：x = 121
+     * 输出：true
+     * 示例2：
+     *
+     * 输入：x = -121
+     * 输出：false
+     * 解释：从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+     * 示例 3：
+     *
+     * 输入：x = 10
+     * 输出：false
+     * 解释：从右向左读, 为 01 。因此它不是一个回文数。
+     */
+    public static boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int v = 0;
+        String s = String.valueOf(x);
+        int length = s.length();
+        for (int i = 0; i < length / 2; i++) {
+            if (s.charAt(i) != s.charAt(length - 1 - i)) {
+                 return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+     *
+     * 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+     *
+     * 你可以按任意顺序返回答案。
+     *
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：nums = [2,7,11,15], target = 9
+     * 输出：[0,1]
+     * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+     * 示例 2：
+     *
+     * 输入：nums = [3,2,4], target = 6
+     * 输出：[1,2]
+     * 示例 3：
+     *
+     * 输入：nums = [3,3], target = 6
+     * 输出：[0,1]
+     */
+    public static int[] twoSum(int[] nums, int target) {
+        // 这里可以不用先全初始化一个hashmap; 省一次遍历;
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(var i = 0; i < nums.length; i ++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{i, map.get(target - nums[i])};
+            }
+            map.put(nums[i], i);
+        }
+
+        return new int[]{};
     }
 }
