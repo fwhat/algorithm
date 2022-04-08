@@ -70,3 +70,8 @@
 + [code1](https://leetcode-cn.com/problems/two-sum/) [两数之和](src/main/java/com/fwhat/algorithm/number/Number.java#twoSum)
 + [code2](https://leetcode-cn.com/problems/add-two-numbers/) [两数相加](src/main/java/com/fwhat/algorithm/list/List.java#addTwoNumbers2)
 + [code3](https://leetcode-cn.com/problems/add-two-numbers/) [无重复字符的最长子串](src/main/java/com/fwhat/algorithm/list/List.java#addTwoNumbers2)
++ [code14](https://leetcode-cn.com/problems/longest-common-prefix/) [最长公共前缀](src/main/java/com/fwhat/algorithm/string/Strings.java#longestCommonPrefix)
++ [code20](https://leetcode-cn.com/problems/valid-parentheses/) [有效的括号](src/main/java/com/fwhat/algorithm/string/Strings.java#isValid)
++ [区间交集](src/main/java/com/fwhat/algorithm/other/Intersection.java#intersection)
++ [code26](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/) [removeDuplicates](src/main/java/com/fwhat/algorithm/array/Arrays.java#removeDuplicates)
+

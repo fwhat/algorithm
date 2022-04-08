@@ -1,5 +1,7 @@
 package com.fwhat.algorithm.string;
 
+import com.fwhat.algorithm.Time100;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
@@ -698,5 +700,122 @@ public class Strings {
         }
 
         return Math.max(size, max);
+    }
+
+    /**
+     * 最长公共前缀
+     * 编写一个函数来查找字符串数组中的最长公共前缀。
+     *
+     * 如果不存在公共前缀，返回空字符串 ""。
+     *
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：strs = ["flower","flow","flight"]
+     * 输出："fl"
+     * 示例 2：
+     *
+     * 输入：strs = ["dog","racecar","car"]
+     * 输出：""
+     * 解释：输入不存在公共前缀。
+     *  
+     *
+     * 提示：
+     *
+     * 1 <= strs.length <= 200
+     * 0 <= strs[i].length <= 200
+     * strs[i] 仅由小写英文字母组成
+     */
+    @Time100
+    public String longestCommonPrefix(String[] strs) {
+        int minLen = strs[0].length();
+
+        for (String str : strs) {
+            minLen = Math.min(str.length(), minLen);
+        }
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < minLen; i++) {
+            char ch = strs[0].charAt(i);
+            for (int j = 1; j < strs.length; j++) {
+                if (ch != strs[j].charAt(i)) {
+                    return builder.toString();
+                }
+            }
+
+            builder.append(ch);
+        }
+        return builder.toString();
+    }
+
+    /**
+     * 有效的括号
+     * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+     *
+     * 有效字符串需满足：
+     *
+     * 左括号必须用相同类型的右括号闭合。
+     * 左括号必须以正确的顺序闭合。
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：s = "()"
+     * 输出：true
+     * 示例 2：
+     *
+     * 输入：s = "()[]{}"
+     * 输出：true
+     * 示例 3：
+     *
+     * 输入：s = "(]"
+     * 输出：false
+     * 示例 4：
+     *
+     * 输入：s = "([)]"
+     * 输出：false
+     * 示例 5：
+     *
+     * 输入：s = "{[]}"
+     * 输出：true
+     *  
+     *
+     * 提示：
+     *
+     * 1 <= s.length <= 104
+     * s 仅由括号 '()[]{}' 组成
+     */
+    @Time100
+    public static boolean isValid(String s) {
+        int len = s.length();
+        if (len % 2 != 0) {
+            return false;
+        }
+
+        char[] chars = new char[len];
+        int charIndex = 0;
+        for (int i = 0; i < len; i++) {
+            char ch = s.charAt(i);
+            if (ch == ')' || ch == ']' || ch == '}') {
+                if (charIndex > 0) {
+                    if (
+                            (ch == ')' && chars[charIndex-1] == '(')||
+                            (ch == ']' && chars[charIndex-1] == '[')||
+                            (ch == '}' && chars[charIndex-1] == '{')
+                    ) {
+                        charIndex--;
+                    } else {
+                        chars[charIndex++] = ch;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                chars[charIndex++] = ch;
+            }
+        }
+        return charIndex == 0;
     }
 }
