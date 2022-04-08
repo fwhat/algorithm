@@ -36,33 +36,35 @@ public class Strings {
         System.out.println(lengthOfLongestSubstring("pwwkew"));
         System.out.println(lengthOfLongestSubstring(" "));
         System.out.println(lengthOfLongestSubstring("tmmzuxt"));
+        System.out.println(strStr("aaaaa", "baa"));
+        System.out.println(strStr("hello", "ll"));
     }
 
     /**
      * 字符串序列判定
-     * 
+     * <p>
      * 输入两个字符串S和L，都只包含英文小写字母。S长度<=100，L长度<=500,000。判定S是否是L的有效子串。
-     * 
+     * <p>
      * 判定规则：
-     * 
+     * <p>
      * S中的每个字符在L中都能找到（可以不连续），且S在Ｌ中字符的前后顺序与S中顺序要保持一致。
-     * 
+     * <p>
      * （例如，S="ace"是L="abcde"的一个子序列且有效字符是a、c、e，而"aec"不是有效子序列，且有效字符只有a、e）
-     * 
+     * <p>
      * 输入描述:
-     * 
+     * <p>
      * 输入两个字符串S和L，都只包含英文小写字母。
      * S长度<=100，L长度<=500,000。
      * 先输入S，再输入L，每个字符串占一行。
      * 输出描述:
-     * 
+     * <p>
      * S串最后一个有效字符在L中的位置。（首位从0开始计算，无有效字符返回-1）
-     * 
+     * <p>
      * 示例1
      * 输入
      * ace
      * abcde
-     * 
+     * <p>
      * 输出 4
      */
     public static int subStringLastIndex(String sub, String full) {
@@ -89,15 +91,15 @@ public class Strings {
 
     /**
      * 字符串分割
-     * 
+     * <p>
      * 描述
      * •连续输入字符串，请按长度为8拆分每个输入字符串并进行输出；
-     * 
+     * <p>
      * •长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。
      * （注：本题有多组输入）
      * 输入描述：
      * 连续输入字符串(输入多次,每个字符串长度小于等于100)
-     * 
+     * <p>
      * 输出描述：
      * 依次输出所有分割后的长度为8的新字符串
      */
@@ -130,7 +132,7 @@ public class Strings {
      * 首先，选择一个单词作为密匙，如TRAILBLAZERS。如果单词中包含有重复的字母，只保留第1个，其余几个丢弃。现在，修改过的那个单词属于字母表的下面，
      * 如下：
      * A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-     * 
+     * <p>
      * T R A I L B Z E S C D F G H J K M N O P Q U V W X Y
      */
     public static String encrypt(String key, String data) {
@@ -226,11 +228,11 @@ public class Strings {
      * 题目描述：
      * 给定一个字符串String，求取该字符串满足条件的最长子串的长度。
      * 条件：该子串中各字符最多出现两次。
-     * 
+     * <p>
      * 测试用例：
      * 输入：abcabcbb
      * 输出：6
-     * 
+     * <p>
      * 说明：子串abcabc每个字符出现的次数都小于等于2，满足条件且为最长，输出长度6。
      */
     public static int maxSubString(String str) {
@@ -262,31 +264,31 @@ public class Strings {
      * 连续字母长度
      * 给定一个字符串，只包含大写字母，求在包含同一字母的子串中，长度第 k 长的子串的长度，相同字母只取最长的那个子串。
      * 输入描述:
-     * 
+     * <p>
      * 第一行有一个子串(1<长度<=100)，只包含大写字母。
      * 第二行为 k的值
      * 输出描述:
-     * 
+     * <p>
      * 输出连续出现次数第k多的字母的次数。
      * 示例
-     * 
+     * <p>
      * 输入：
      * AABAAA
      * 2
      * 输出：
      * 1
      * 说明：
-     * 
+     * <p>
      * 同一字母连续出现最多的A 3次
      * 第二多2次 但A出现连续3次
-     * 
+     * <p>
      * 输入：
      * AAAAHHHBBCDHHHH
      * 3
      * 输出：
      * 2
      * 说明：
-     * 
+     * <p>
      * 同一字母连续出现的最多的是A和H，四次
      * 第二多的是B，2次
      */
@@ -321,29 +323,29 @@ public class Strings {
 
     /**
      * 题目描述
-     * 
+     * <p>
      * 给定一个url前缀和url后缀,通过,分割 需要将其连接为一个完整的url
      * 如果前缀结尾和后缀开头都没有/，需要自动补上/连接符
      * 如果前缀结尾和后缀开头都为/，需要自动去重
      * 约束：不用考虑前后缀URL不合法情况
      * 输入描述
-     * 
+     * <p>
      * url前缀(一个长度小于100的字符串) url后缀(一个长度小于100的字符串)
-     * 
+     * <p>
      * 输出描述
-     * 
+     * <p>
      * 拼接后的url
-     * 
+     * <p>
      * 一、 输入
      * /acm,/bb
      * 输出
-     * 
+     * <p>
      * /acm/bb
      * 二、输入
-     * 
+     * <p>
      * /abc/,/bcd
      * 输出
-     * 
+     * <p>
      * /abc/bcd
      * 拼接 URL
      */
@@ -382,16 +384,16 @@ public class Strings {
      * 1<=s.length<=1000
      * 示例
      * 输入：abcdef
-     * 
+     * <p>
      * 输出：abcdef
-     * 
+     * <p>
      * 说明：abcdef已经是最小字符串，不需要交换
-     * 
-     * 
+     * <p>
+     * <p>
      * 输入：bcdefa
-     * 
+     * <p>
      * 输出：acdefb
-     * 
+     * <p>
      * 说明：a和b进行位置交换，可以得到最小字符串
      */
     public static void minString(String str) {
@@ -419,7 +421,7 @@ public class Strings {
     /**
      * 输入一个字符串，判断是否含有相同的子串（字串长度大于1），是输出1，否，输出0。
      * 例如12312含有两个12,所以输出1；23456则没有相同子序列，输出0.
-     * 
+     * <p>
      * 输入：12312
      * 输出：1
      */
@@ -449,17 +451,17 @@ public class Strings {
      * · “a” 、 “aa”是元音字符串，其瑕疵度都为0
      * · “aiur”不是元音字符串（结尾不是元音字符）
      * · “abira”是元音字符串，其瑕疵度为2
-     * 
+     * <p>
      * 现给定一个字符串，请找出指定瑕疵度的最长元音字符子串，并输出其长度，如果找不到满足条件的元音字符子串，输出0。
      * 子串：字符串中任意个连续的字符组成的子序列称为该字符串的子串。
-     * 
+     * <p>
      * 输入输出
      * 输入描述:
      * 首行输入是一个整数，表示预期的瑕疵度flaw，取值范围[0, 65535]。
      * 接下来一行是一个仅由字符a-z和A-Z组成的字符串，字符串长度(0, 65535]。
      * 输出描述:
      * 输出为一个整数，代表满足条件的元音字符子串的长度。
-     * 
+     * <p>
      * 示例1
      * 输入
      * 0
@@ -468,7 +470,7 @@ public class Strings {
      * 3
      * 说明
      * 满足条件的最长元音字符子串有两个，分别为uio和auu，长度为3。
-     * 
+     * <p>
      * 示例2
      * 输入
      * 2
@@ -525,23 +527,23 @@ public class Strings {
 
     /**
      * 题目标题：
-     * 
+     * <p>
      * 判断短字符串中的所有字符是否在长字符串中全部出现
-     * 
+     * <p>
      * 详细描述：
-     * 
+     * <p>
      * 接口说明
-     * 
+     * <p>
      * 原型：
-     * 
+     * <p>
      * 输入描述:
      * 输入两个字符串。第一个为短字符，第二个为长字符。
-     * 
+     * <p>
      * 输出描述:
      * 返回值：
-     * 
+     * <p>
      * 示例1
-     * 
+     * <p>
      * 输入
      * bc
      * abc
@@ -568,7 +570,7 @@ public class Strings {
 
     /**
      * 罗马数字包含以下七种字符:I，V，X，L，C，D和M。
-     *
+     * <p>
      * 字符          数值
      * I             1
      * V             5
@@ -578,42 +580,42 @@ public class Strings {
      * D             500
      * M             1000
      * 例如， 罗马数字 2 写做II，即为两个并列的 1 。12 写做XII，即为X+II。 27 写做XXVII, 即为XX+V+II。
-     *
+     * <p>
      * 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做IIII，而是IV。数字 1 在数字 5 的左边，
      * 所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为IX。这个特殊的规则只适用于以下六种情况：
-     *
+     * <p>
      * I可以放在V(5) 和X(10) 的左边，来表示 4 和 9。
      * X可以放在L(50) 和C(100) 的左边，来表示 40 和90。
      * C可以放在D(500) 和M(1000) 的左边，来表示400 和900。
      * 给定一个罗马数字，将其转换成整数。
-     *
-     * 
-     *
+     * <p>
+     * <p>
+     * <p>
      * 示例1:
-     *
+     * <p>
      * 输入:s = "III"
      * 输出: 3
      * 示例2:
-     *
+     * <p>
      * 输入:s = "IV"
      * 输出: 4
      * 示例3:
-     *
+     * <p>
      * 输入:s = "IX"
      * 输出: 9
      * 示例4:
-     *
+     * <p>
      * 输入:s = "LVIII"
      * 输出: 58
      * 解释: L = 50, V= 5, III = 3.
      * 示例5:
-     *
+     * <p>
      * 输入:s = "MCMXCIV"
      * 输出: 1994
      * 解释: M = 1000, CM = 900, XC = 90, IV = 4.
-     *
+     * <p>
      * 提示：
-     *
+     * <p>
      * 1 <= s.length <= 15
      * s 仅含字符 ('I', 'V', 'X', 'L', 'C', 'D', 'M')
      * 题目数据保证 s 是一个有效的罗马数字，且表示整数在范围 [1, 3999] 内
@@ -640,8 +642,8 @@ public class Strings {
                 char nextCh = s.charAt(i + 1);
                 if (
                         (ch == 'I' && (nextCh == 'V' || nextCh == 'X'))
-                        || (ch == 'X' && (nextCh == 'L' || nextCh == 'C'))
-                        || ch == 'C' && (nextCh == 'D' || nextCh == 'M')
+                                || (ch == 'X' && (nextCh == 'L' || nextCh == 'C'))
+                                || ch == 'C' && (nextCh == 'D' || nextCh == 'M')
                 ) {
                     v = map.get(nextCh) - v;
                     i++;
@@ -655,32 +657,31 @@ public class Strings {
 
     /**
      * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
-     *
-     *  
-     *
+     * <p>
+     * <p>
+     * <p>
      * 示例 1:
-     *
+     * <p>
      * 输入: s = "abcabcbb"
-     * 输出: 3 
+     * 输出: 3
      * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
      * 示例 2:
-     *
+     * <p>
      * 输入: s = "bbbbb"
      * 输出: 1
      * 解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
      * 示例 3:
-     *
+     * <p>
      * 输入: s = "pwwkew"
      * 输出: 3
      * 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
-     *      请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
-     *  
-     *
+     * 请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+     * <p>
+     * <p>
      * 提示：
-     *
+     * <p>
      * 0 <= s.length <= 5 * 104
      * s 由英文字母、数字、符号和空格组成
-     *
      */
     public static int lengthOfLongestSubstring(String s) {
         int len = s.length();
@@ -705,24 +706,24 @@ public class Strings {
     /**
      * 最长公共前缀
      * 编写一个函数来查找字符串数组中的最长公共前缀。
-     *
+     * <p>
      * 如果不存在公共前缀，返回空字符串 ""。
-     *
-     *  
-     *
+     * <p>
+     * <p>
+     * <p>
      * 示例 1：
-     *
+     * <p>
      * 输入：strs = ["flower","flow","flight"]
      * 输出："fl"
      * 示例 2：
-     *
+     * <p>
      * 输入：strs = ["dog","racecar","car"]
      * 输出：""
      * 解释：输入不存在公共前缀。
-     *  
-     *
+     * <p>
+     * <p>
      * 提示：
-     *
+     * <p>
      * 1 <= strs.length <= 200
      * 0 <= strs[i].length <= 200
      * strs[i] 仅由小写英文字母组成
@@ -753,37 +754,37 @@ public class Strings {
     /**
      * 有效的括号
      * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
-     *
+     * <p>
      * 有效字符串需满足：
-     *
+     * <p>
      * 左括号必须用相同类型的右括号闭合。
      * 左括号必须以正确的顺序闭合。
-     *  
-     *
+     * <p>
+     * <p>
      * 示例 1：
-     *
+     * <p>
      * 输入：s = "()"
      * 输出：true
      * 示例 2：
-     *
+     * <p>
      * 输入：s = "()[]{}"
      * 输出：true
      * 示例 3：
-     *
+     * <p>
      * 输入：s = "(]"
      * 输出：false
      * 示例 4：
-     *
+     * <p>
      * 输入：s = "([)]"
      * 输出：false
      * 示例 5：
-     *
+     * <p>
      * 输入：s = "{[]}"
      * 输出：true
-     *  
-     *
+     * <p>
+     * <p>
      * 提示：
-     *
+     * <p>
      * 1 <= s.length <= 104
      * s 仅由括号 '()[]{}' 组成
      */
@@ -801,9 +802,9 @@ public class Strings {
             if (ch == ')' || ch == ']' || ch == '}') {
                 if (charIndex > 0) {
                     if (
-                            (ch == ')' && chars[charIndex-1] == '(')||
-                            (ch == ']' && chars[charIndex-1] == '[')||
-                            (ch == '}' && chars[charIndex-1] == '{')
+                            (ch == ')' && chars[charIndex - 1] == '(') ||
+                                    (ch == ']' && chars[charIndex - 1] == '[') ||
+                                    (ch == '}' && chars[charIndex - 1] == '{')
                     ) {
                         charIndex--;
                     } else {
@@ -817,5 +818,67 @@ public class Strings {
             }
         }
         return charIndex == 0;
+    }
+
+    /**
+     * 实现 strStr()
+     * <p>
+     * 实现 strStr() 函数。
+     * <p>
+     * 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回  -1 。
+     * <p>
+     * 说明：
+     * <p>
+     * 当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。
+     * <p>
+     * 对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与 C 语言的 strstr() 以及 Java 的 indexOf() 定义相符。
+     * <p>
+     * 示例 1：
+     * <p>
+     * 输入：haystack = "hello", needle = "ll"
+     * 输出：2
+     * 示例 2：
+     * <p>
+     * 输入：haystack = "aaaaa", needle = "bba"
+     * 输出：-1
+     * 示例 3：
+     * <p>
+     * 输入：haystack = "", needle = ""
+     * 输出：0
+     */
+    @Time100
+    public static int strStr(String haystack, String needle) {
+        int needleLen = needle.length();
+        int haystackLen = haystack.length();
+
+        if (needle.length() == 0) {
+            return 0;
+        }
+
+        if (haystackLen < needleLen) {
+            return -1;
+        }
+
+        for (int i = 0; i < haystackLen; i++) {
+            char ch = haystack.charAt(i);
+            if (ch == needle.charAt(0)) {
+                if (haystackLen - 1 - i < needleLen - 1) {
+                    return -1;
+                }
+                boolean find = true;
+
+                for (int j = 1; j < needleLen; j++) {
+                    if (haystack.charAt(i + j) != needle.charAt(j)) {
+                        find = false;
+                        break;
+                    }
+                }
+                if (find) {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
     }
 }

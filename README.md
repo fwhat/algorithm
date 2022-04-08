@@ -73,5 +73,7 @@
 + [code14](https://leetcode-cn.com/problems/longest-common-prefix/) [最长公共前缀](src/main/java/com/fwhat/algorithm/string/Strings.java#longestCommonPrefix)
 + [code20](https://leetcode-cn.com/problems/valid-parentheses/) [有效的括号](src/main/java/com/fwhat/algorithm/string/Strings.java#isValid)
 + [区间交集](src/main/java/com/fwhat/algorithm/other/Intersection.java#intersection)
-+ [code26](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/) [removeDuplicates](src/main/java/com/fwhat/algorithm/array/Arrays.java#removeDuplicates)
++ [code26](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/) [移除重复值](src/main/java/com/fwhat/algorithm/array/Arrays.java#removeDuplicates)
++ [code27](https://leetcode-cn.com/problems/remove-element/) [移除元素](src/main/java/com/fwhat/algorithm/array/Arrays.java#removeElement)
++ [code28](https://leetcode-cn.com/problems/implement-strstr/) [实现 strStr()](src/main/java/com/fwhat/algorithm/string/Strings.java#strStr)
 
