@@ -38,6 +38,12 @@ public class Strings {
         System.out.println(lengthOfLongestSubstring("tmmzuxt"));
         System.out.println(strStr("aaaaa", "baa"));
         System.out.println(strStr("hello", "ll"));
+
+        System.out.println(longestPalindrome("babad"));
+        System.out.println(longestPalindrome("cbbd"));
+        System.out.println(longestPalindrome("a"));
+        System.out.println(longestPalindrome("ac"));
+        System.out.println(longestPalindrome("abb"));
     }
 
     /**
@@ -880,5 +886,54 @@ public class Strings {
         }
 
         return -1;
+    }
+
+    /**
+     * 最长回文子串
+     * 给你一个字符串 s，找到 s 中最长的回文子串。
+     *
+     * 示例 1：
+     *
+     * 输入：s = "babad"
+     * 输出："bab"
+     * 解释："aba" 同样是符合题意的答案。
+     * 示例 2：
+     *
+     * 输入：s = "cbbd"
+     * 输出："bb"
+     *
+     * 提示：
+     *
+     * 1 <= s.length <= 1000
+     * s 仅由数字和英文字母组成
+     *
+     */
+    public static String longestPalindrome(String s) {
+        int len = s.length();
+        String longest = "";
+
+        for (int i = 0; i < len; i++) {
+            for (int j = i; j < len; j++) {
+                if ((j - i  +1) > longest.length()) {
+                    if (isPalindrome(s, i, j)) {
+                        longest = s.substring(i, j + 1);
+                    }
+                }
+            }
+        }
+
+        return longest;
+    }
+
+    private static boolean isPalindrome(String s, int start, int end) {
+        int len = end - start + 1;
+
+        for (int i = 0; i < len / 2; i++) {
+            if (s.charAt(i + start) != s.charAt(end - i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

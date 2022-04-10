@@ -2,38 +2,41 @@ package com.fwhat.algorithm.search;
 
 import com.fwhat.algorithm.Assert;
 import com.fwhat.algorithm.Mid;
+import com.fwhat.algorithm.Time100;
 
 import java.util.HashMap;
 
 public class Search {
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 5, 6, 7, 8, 10, 20};
+//        int[] arr = {1, 2, 3, 5, 6, 7, 8, 10, 20};
+//
+//        Assert.equal(searchInSortArray(arr, 7), 5);
+//        Assert.equal(searchInSortArray(arr, 11), -1);
+//
+//        int[] arr2 = {1, 2, 3, 5, 6, 6, 6, 7, 8, 10, 20};
+//        Assert.equal(searchThanMostLeftInSortArray(arr2, 6), 4);
+//        Assert.equal(searchThanMostLeftInSortArray(arr2, 100), -1);
+//        Assert.equal(searchThanMostLeftInSortArray(arr2, 11), 10);
+//
+//        int[] arr3 = {1, 2, 3, 5, 6, 7, 6, 7, 8, 10, 20};
+//        Assert.equal(searchPartMinIndex(arr3), 0);
+//
+//        int[] arr4 = {3, 2, 5, 6, 7, 6, 7, 8, 10, 9};
+//        Assert.equal(searchPartMinIndex(arr4), 9);
+//
+//        int[] arr5 = {3, 2, 5, 6, 7, 6, 7, 8, 10, 11};
+//        int[] find = {1, 5};
+//        Assert.notEqual(searchInSortArray(find, searchPartMinIndex(arr5)), -1);
+//
+//        int[] arr6 = {10, 8, 7, 5, 7, 9, 12};
+//        Assert.equal(searchPartMinIndex(arr6), 3);
+//
+//        int[] arr7 = {10, 8, 11, 5, 7, 6, 11};
+//        int[] find2 = {1, 3, 5};
+//        Assert.notEqual(searchInSortArray(find2, searchPartMinIndex(arr7)), -1);
 
-        Assert.equal(searchInSortArray(arr, 7), 5);
-        Assert.equal(searchInSortArray(arr, 11), -1);
-
-        int[] arr2 = {1, 2, 3, 5, 6, 6, 6, 7, 8, 10, 20};
-        Assert.equal(searchThanMostLeftInSortArray(arr2, 6), 4);
-        Assert.equal(searchThanMostLeftInSortArray(arr2, 100), -1);
-        Assert.equal(searchThanMostLeftInSortArray(arr2, 11), 10);
-
-        int[] arr3 = {1, 2, 3, 5, 6, 7, 6, 7, 8, 10, 20};
-        Assert.equal(searchPartMinIndex(arr3), 0);
-
-        int[] arr4 = {3, 2, 5, 6, 7, 6, 7, 8, 10, 9};
-        Assert.equal(searchPartMinIndex(arr4), 9);
-
-        int[] arr5 = {3, 2, 5, 6, 7, 6, 7, 8, 10, 11};
-        int[] find = {1, 5};
-        Assert.notEqual(searchInSortArray(find, searchPartMinIndex(arr5)), -1);
-
-        int[] arr6 = {10, 8, 7, 5, 7, 9, 12};
-        Assert.equal(searchPartMinIndex(arr6), 3);
-
-        int[] arr7 = {10, 8, 11, 5, 7, 6, 11};
-        int[] find2 = {1, 3, 5};
-        Assert.notEqual(searchInSortArray(find2, searchPartMinIndex(arr7)), -1);
+        System.out.println(searchInsert(new int[]{1,3,5,6}, 5));
     }
 
     public static int searchInSortArray(int[] arr, int target) {
@@ -156,6 +159,56 @@ public class Search {
         }
 
         return new int[]{};
+    }
+
+    /**
+     * 搜索插入位置
+     * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+     *
+     * 请必须使用时间复杂度为 O(log n) 的算法。
+     *
+     * 示例 1:
+     *
+     * 输入: nums = [1,3,5,6], target = 5
+     * 输出: 2
+     * 示例2:
+     *
+     * 输入: nums = [1,3,5,6], target = 2
+     * 输出: 1
+     * 示例 3:
+     *
+     * 输入: nums = [1,3,5,6], target = 7
+     * 输出: 4
+     */
+    @Time100
+    public static int searchInsert(int[] nums, int target) {
+        int len = nums.length;
+        int left = 0;
+        int right = len - 1;
+        int mid = (right + left) / 2;
+
+        while (left <= right) {
+            if (nums[mid] == target) {
+                return mid;
+            }
+
+            if (nums[mid] < target) {
+                left = mid + 1;
+            }
+
+            if (nums[mid] > target) {
+                right = mid - 1;
+            }
+
+            mid = (right + left) / 2;
+        }
+
+        // 注意最后的插入位置判断
+        if (nums[mid] < target) {
+            return mid + 1;
+        }
+
+        return mid;
     }
 
 }

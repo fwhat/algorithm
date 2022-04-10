@@ -76,4 +76,6 @@
 + [code26](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/) [移除重复值](src/main/java/com/fwhat/algorithm/array/Arrays.java#removeDuplicates)
 + [code27](https://leetcode-cn.com/problems/remove-element/) [移除元素](src/main/java/com/fwhat/algorithm/array/Arrays.java#removeElement)
 + [code28](https://leetcode-cn.com/problems/implement-strstr/) [实现 strStr()](src/main/java/com/fwhat/algorithm/string/Strings.java#strStr)
++ [code35](https://leetcode-cn.com/problems/search-insert-position/) [搜索插入位置](src/main/java/com/fwhat/algorithm/search/Search.java#searchInsert)
++ [code5](https://leetcode-cn.com/problems/longest-palindromic-substring/) [最长的回文数](src/main/java/com/fwhat/algorithm/string/Strings.java#longestPalindrome)
 
