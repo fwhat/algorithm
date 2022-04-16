@@ -417,6 +417,53 @@ public class List {
         return minHead;
     }
 
+    public static ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
+        ListNode resLast = null;
+        ListNode resHead = null;
+        // 1 -> 2 -> 3->4->5->6
+        // 1->2->3
+        // 4->5->6
+        if (list1 == null) {
+            return list2;
+        }
+
+        if (list2 == null) {
+            return list1;
+        }
+
+        while (list1 != null && list2 != null) {
+            // 2
+            ListNode currentNode = new ListNode();
+
+            if (list1.val < list2.val) {
+                currentNode.val = list1.val;
+                list1 = list1.next;
+            } else {
+                currentNode.val = list2.val;
+                list2 = list2.next;
+            }
+
+            if (resLast == null) {
+                resLast = currentNode;
+                resHead = currentNode;
+            } else {
+                resLast.next = currentNode;
+                resLast = resLast.next;
+            }
+        }
+
+        // last 6
+        if (list1 != null) {
+            resLast.next = list1;
+        }
+
+        if (list2 != null) {
+            resLast.next = list2;
+        }
+
+        return resHead;
+    }
+
     /**
      * https://leetcode-cn.com/problems/add-two-numbers-ii/submissions/
      * 两个链表相加 1-2-3 5-6-7-8

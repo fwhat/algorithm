@@ -78,4 +78,6 @@
 + [code28](https://leetcode-cn.com/problems/implement-strstr/) [实现 strStr()](src/main/java/com/fwhat/algorithm/string/Strings.java#strStr)
 + [code35](https://leetcode-cn.com/problems/search-insert-position/) [搜索插入位置](src/main/java/com/fwhat/algorithm/search/Search.java#searchInsert)
 + [code5](https://leetcode-cn.com/problems/longest-palindromic-substring/) [最长的回文数](src/main/java/com/fwhat/algorithm/string/Strings.java#longestPalindrome)
++ [code6](https://leetcode-cn.com/problems/zigzag-conversion/) [Z 字形变换](src/main/java/com/fwhat/algorithm/string/Strings.java#convertZ)
++ [code8](https://leetcode-cn.com/problems/string-to-integer-atoi/) [字符串转换整数 (atoi)](src/main/java/com/fwhat/algorithm/string/Strings.java#myAtoi)
 
