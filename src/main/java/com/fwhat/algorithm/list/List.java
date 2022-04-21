@@ -1,5 +1,8 @@
 package com.fwhat.algorithm.list;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class List {
     public static class ListNode {
         int val;
@@ -511,25 +514,25 @@ public class List {
 
     /**
      * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
-     *
+     * <p>
      * 请你将两个数相加，并以相同形式返回一个表示和的链表。
-     *
+     * <p>
      * 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
-     *
+     * <p>
      * 输入：l1 = [2,4,3], l2 = [5,6,4]
      * 输出：[7,0,8]
      * 解释：342 + 465 = 807.
      * 示例 2：
-     *
+     * <p>
      * 输入：l1 = [0], l2 = [0]
      * 输出：[0]
      * 示例 3：
-     *
+     * <p>
      * 输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
      * 输出：[8,9,9,9,0,0,0,1]
-     *
+     * <p>
      * 提示：
-     *
+     * <p>
      * 每个链表中的节点数在范围 [1, 100] 内
      * 0 <= Node.val <= 9
      * 题目数据保证列表表示的数字不含前导零
@@ -582,6 +585,64 @@ public class List {
         }
         if (add > 0) {
             last.next = new ListNode(1);
+        }
+
+        return head;
+    }
+
+    /**
+     * https://leetcode-cn.com/problems/merge-k-sorted-lists/
+     * 给你一个链表数组，每个链表都已经按升序排列。
+     *
+     * 请你将所有链表合并到一个升序链表中，返回合并后的链表。
+     *
+     * 示例 1：
+     *
+     * 输入：lists = [[1,4,5],[1,3,4],[2,6]]
+     * 输出：[1,1,2,3,4,4,5,6]
+     * 解释：链表数组如下：
+     * [
+     *   1->4->5,
+     *   1->3->4,
+     *   2->6
+     * ]
+     * 将它们合并到一个有序链表中得到。
+     * 1->1->2->3->4->4->5->6
+     *
+     */
+    public ListNode mergeKList(ListNode[] lists) {
+        if (lists.length == 0) {
+            return null;
+        }
+
+        PriorityQueue<ListNode> heap = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                return Integer.compare(o1.val, o2.val);
+            }
+        });
+
+        for (ListNode listNode : lists) {
+            if (listNode != null) {
+                heap.add(listNode);
+            }
+        }
+
+        ListNode head = heap.poll();
+        if (head == null) {
+            return null;
+        }
+        if (head.next != null) {
+            heap.add(head.next);
+        }
+        ListNode last = head;
+        while (!heap.isEmpty()) {
+            ListNode poll = heap.poll();
+            last.next = poll;
+            last = poll;
+            if (poll.next != null) {
+                heap.add(poll.next);
+            }
         }
 
         return head;
