@@ -1,6 +1,10 @@
 package com.fwhat.algorithm.list;
 
+import com.fwhat.algorithm.Time100;
+import com.fwhat.algorithm.tree.Tree;
+
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class List {
@@ -226,6 +230,18 @@ public class List {
 
         ListNode newHead7 = addTwoNumbers(list8.getHead(), list9.getHead());
         print(newHead7);
+
+        SingleList list10 = new SingleList();
+        list10.add(1);
+        list10.add(1);
+        list10.add(2);
+        list10.add(2);
+        list10.add(3);
+        list10.add(4);
+        list10.add(5);
+        list10.add(5);
+
+        print(deleteDuplicates(list10.getHead()));
     }
 
     public static void printReserve(DoubleNode tail) {
@@ -646,5 +662,64 @@ public class List {
         }
 
         return head;
+    }
+
+    @Time100
+    public static ListNode deleteDuplicates(ListNode head) {
+        HashMap<Integer, Boolean> cache = new HashMap<>();
+
+        ListNode start = head;
+        ListNode pre = head;
+
+        while (start != null) {
+            if (cache.containsKey(start.val)) {
+                pre.next = start.next;
+            } else {
+                cache.put(start.val, true);
+                pre = start;
+            }
+            start = start.next;
+        }
+
+        return head;
+    }
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        HashMap<ListNode, Boolean> cache = new HashMap<>();
+
+
+        while (headA != null) {
+            cache.put(headA, true);
+            headA = headA.next;
+        }
+
+        while (headB != null) {
+            if (cache.containsKey(headB)) {
+                return headB;
+            }
+            headB = headB.next;
+        }
+
+        return null;
+    }
+
+    @Time100
+    public boolean hasCycle(ListNode head) {
+        ListNode longIndex = head;
+        ListNode shortIndex = head;
+
+        while (true) {
+            if (shortIndex == null || shortIndex.next == null || longIndex.next == null || longIndex.next.next == null) {
+                return false;
+            }
+
+            longIndex = longIndex.next.next;
+            shortIndex = shortIndex.next;
+
+
+            if (shortIndex == longIndex) {
+                return true;
+            }
+        }
     }
 }

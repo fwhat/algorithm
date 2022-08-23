@@ -2,19 +2,23 @@ package com.fwhat.algorithm.tree;
 
 import com.fwhat.algorithm.Time100;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Tree {
 
-    public class TreeNode {
+    public static class TreeNode {
         public int val;
         public TreeNode left;
         public TreeNode right;
     }
 
     public static void main(String[] args) {
-        minNodePath(new int[]{3, 5, 7, -1, -1, 2, 4});
-        minNodePath(new int[]{5, 9, 8, -1, -1, 7, -1, -1, -1, -1, -1, 6});
+        eachIn(sortedArrayToBST(new int[]{-10,-3,0,5,9}));
+
+//        minNodePath(new int[]{3, 5, 7, -1, -1, 2, 4});
+//        minNodePath(new int[]{5, 9, 8, -1, -1, 7, -1, -1, -1, -1, -1, 6});
     }
 
     public static void minNodePath(int[] arr) {
@@ -54,7 +58,7 @@ public class Tree {
         eachPre(head.right);
     }
 
-    public void eachIn(TreeNode head) {
+    public static void eachIn(TreeNode head) {
         if (head == null) {
             return;
         }
@@ -96,7 +100,7 @@ public class Tree {
 
     /**
      * https://leetcode-cn.com/problems/symmetric-tree/
-     *
+     * <p>
      * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
      */
     @Time100
@@ -115,5 +119,68 @@ public class Tree {
         }
 
         return p.val == q.val && isMirror(p.left, q.right) && isMirror(p.right, q.left);
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        eachIn(root, list);
+
+        return list;
+    }
+
+    public static void eachIn(TreeNode head, List<Integer> list) {
+        if (head == null) {
+            return;
+        }
+
+        eachIn(head.left);
+        list.add(head.val);
+        eachIn(head.right);
+    }
+
+    public static TreeNode sortedArrayToBST(int[] nums) {
+        return bst(nums, 0, nums.length);
+    }
+
+    public static TreeNode bst(int[] nums, int min, int max) {
+        if (min > max) {
+            return null;
+        }
+
+        int mid = (max - min) / 2;
+        TreeNode head = new TreeNode();
+        head.val = nums[mid];
+
+        head.left = bst(nums, min, mid);
+        head.right = bst(nums, mid, max);
+
+        return head;
+    }
+
+    public static List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        eachIn(root, list);
+
+        return list;
+    }
+
+    @Time100
+    public java.util.List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        eachEnd(root, list);
+
+        return list;
+    }
+
+    public static void eachEnd(TreeNode head, List<Integer> list) {
+        if (head == null) {
+            return;
+        }
+
+        eachEnd(head.left, list);
+        eachEnd(head.right, list);
+        list.add(head.val);
     }
 }
